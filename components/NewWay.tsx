@@ -11,7 +11,7 @@ const oldWay = [
 
 const newWay = [
   "Live demo site in your inbox within 48 hours",
-  "Starting at $750 — and you see it before you pay a cent",
+  "One flat price — and you see it before you pay a cent",
   "Built specifically for your business, your services, your city",
   "SEO-ready structure baked in from the first line of code",
   "Perfect Lighthouse scores. Loads in under a second.",

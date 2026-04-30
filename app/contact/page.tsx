@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact — CBUS Digital",
@@ -65,50 +66,7 @@ export default function ContactPage() {
             {/* Right — simple contact form */}
             <div className="glass-card rounded-2xl p-8">
               <h2 className="text-xl font-black text-white mb-6">Send a Message</h2>
-              <form
-                action={`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`}
-                method="POST"
-                className="space-y-4"
-              >
-                <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Your Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="First name"
-                    className="w-full bg-white/5 border border-white/12 text-white placeholder-slate-600 rounded-xl px-4 py-3 text-sm outline-none focus:border-violet-500/60 focus:bg-white/8 transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    placeholder="you@example.com"
-                    className="w-full bg-white/5 border border-white/12 text-white placeholder-slate-600 rounded-xl px-4 py-3 text-sm outline-none focus:border-violet-500/60 focus:bg-white/8 transition-all"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Message</label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={5}
-                    placeholder="What's on your mind?"
-                    className="w-full bg-white/5 border border-white/12 text-white placeholder-slate-600 rounded-xl px-4 py-3 text-sm outline-none focus:border-violet-500/60 focus:bg-white/8 transition-all resize-none"
-                  />
-                </div>
-                <input type="hidden" name="_subject" value="New Contact Message — CBUS Digital" />
-                <button
-                  type="submit"
-                  className="w-full glow-button bg-violet-600 hover:bg-violet-500 text-white font-bold py-3.5 rounded-xl transition-all"
-                >
-                  Send Message →
-                </button>
-                <p className="text-slate-600 text-xs text-center">Typically responds within a few hours.</p>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>

@@ -1,7 +1,42 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+
+// Maps the slug used in /services/[slug] to the matching INDUSTRY_GROUPS label
+const SLUG_TO_LABEL: Record<string, string> = {
+  plumbing: "Plumber",
+  hvac: "HVAC / Heating & Cooling",
+  landscaping: "Landscaper / Lawn Care",
+  cleaning: "House Cleaning",
+  roofing: "Roofer",
+  electrical: "Electrician",
+  painting: "Painter",
+  contracting: "General Contractor",
+  "auto-detailing": "Auto Detailing",
+  "pest-control": "Pest Control",
+  "tree-service": "Tree Service",
+  "pressure-washing": "Pressure Washing",
+  handyman: "Handyman",
+  "pool-service": "Pool Service & Repair",
+  locksmith: "Locksmith",
+  chiropractic: "Chiropractor",
+  "med-spa": "Med Spa / Aesthetician",
+  law: "Attorney / Law Firm",
+  accounting: "Accountant / CPA",
+  "personal-training": "Personal Trainer",
+  "dog-grooming": "Dog Grooming",
+  moving: "Moving Company",
+  photography: "Photographer",
+  tutoring: "Tutor / Tutoring Service",
+  flooring: "Flooring Company",
+  "window-cleaning": "Window Cleaning",
+  "appliance-repair": "Appliance Repair",
+  fencing: "Fence Company",
+  "garage-door": "Garage Door Repair",
+  "dumpster-rental": "Dumpster Rental",
+};
 
 interface FormData {
   firstName: string;
@@ -357,6 +392,13 @@ function ServiceAreaInput({
 }
 
 export default function DemoForm() {
+  const searchParams = useSearchParams();
+  const prefilledIndustry = (() => {
+    const slug = searchParams.get("industry");
+    if (!slug) return "";
+    return SLUG_TO_LABEL[slug] ?? "";
+  })();
+
   const [intro, setIntro] = useState(true);
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -366,7 +408,7 @@ export default function DemoForm() {
   const [data, setData] = useState<FormData>({
     firstName: "",
     businessName: "",
-    industry: "",
+    industry: prefilledIndustry,
     customIndustry: "",
     yearsInBusiness: "",
     services: [],
@@ -492,7 +534,7 @@ export default function DemoForm() {
         <div className="glass-card rounded-2xl p-6 max-w-sm mx-auto text-left space-y-3 mb-8">
           <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">What to expect</div>
           {[
-            "11 quick questions about your business",
+            "Answer a few questions about your business",
             "We build your personalized site for free",
             "You get a live link within 1–2 business days",
             "Love it? Then we talk next steps",

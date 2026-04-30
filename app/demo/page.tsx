@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import DemoForm from "@/components/DemoForm";
 
 export const metadata: Metadata = {
@@ -33,7 +34,9 @@ export default function DemoPage() {
 
       {/* Form */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16 relative">
-        <DemoForm />
+        <Suspense fallback={null}>
+          <DemoForm />
+        </Suspense>
       </main>
 
       {/* Footer trust line */}

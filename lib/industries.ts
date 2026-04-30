@@ -19,17 +19,17 @@ export const industries: Industry[] = [
       seoCardBg: 'linear-gradient(135deg, rgba(29,78,216,0.15) 0%, rgba(37,99,235,0.08) 100%)',
     },
     mockup: {
-      navBrand: 'Columbus',
-      navAccent: 'Plumbing',
-      navBg: '#0f172a',
-      heroBg: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1d4ed8 100%)',
-      glowColor: '#1d4ed8',
-      accentColor: '#2563eb',
-      badge: 'Emergency Service Available 24/7',
+      navBrand: 'Capitol City',
+      navAccent: ' Plumbing',
+      navBg: '#1e3a8a',
+      heroBg: 'linear-gradient(135deg, #0c1a3a 0%, #1e3a8a 60%, #1d4ed8 100%)',
+      glowColor: '#f97316',
+      accentColor: '#f97316',
+      badge: '24/7 Emergency Service Available',
       headline: 'Columbus Plumbers You Can Count On',
-      sub: 'Fast response, upfront pricing, licensed & insured.',
-      trustBar: ['Licensed & Insured', '24/7 Emergency', 'Upfront Pricing', '5-Star Rated'],
-      services: ['Emergency Plumbing', 'Drain Cleaning', 'Water Heater', 'Leak Repair', 'Repiping', 'Sewer Line'],
+      sub: 'Upfront pricing, 60-min emergency response, licensed & insured since 1998.',
+      trustBar: ['Licensed & Insured', 'No Surprise Charges', '4.9 Stars · 312 Reviews', '60-Min Response'],
+      services: ['Emergency Plumbing', 'Drain Cleaning', 'Water Heater Repair', 'Leak Detection', 'Pipe Repiping', 'Sewer Line'],
     },
     stats: [
       { value: '75%', label: 'Emergency Searches', detail: 'of plumbing searches are urgent — site must convert immediately' },
@@ -148,7 +148,7 @@ export const industries: Industry[] = [
   {
     slug: 'landscaping',
     name: 'Landscapers & Lawn Care Companies',
-    exampleUrl: 'https://landscaper.cbusdigital.com',
+    exampleUrl: 'https://landscaping.cbusdigital.com',
     metaTitle: 'Web Design for Landscapers | Columbus Lawn Care Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus landscapers that show off your work and fill your schedule. Photo-forward design, seasonal service CTAs, and local SEO built in.',
     heroLine1: 'Websites Built for',
@@ -292,7 +292,7 @@ export const industries: Industry[] = [
   {
     slug: 'roofing',
     name: 'Roofers & Roofing Companies',
-    exampleUrl: 'https://roofer.cbusdigital.com',
+    exampleUrl: 'https://roofing.cbusdigital.com',
     metaTitle: 'Web Design for Roofers | Columbus Roofing Company Websites | CBUS Digital',
     metaDescription: 'High-converting websites for Columbus roofing companies. Storm damage CTAs, financing callouts, and local SEO that generates inspection requests year-round.',
     heroLine1: 'Websites Built for',
@@ -364,7 +364,7 @@ export const industries: Industry[] = [
   {
     slug: 'electrical',
     name: 'Electricians & Electrical Companies',
-    exampleUrl: 'https://electrician.cbusdigital.com',
+    exampleUrl: 'https://electrical.cbusdigital.com',
     metaTitle: 'Web Design for Electricians | Columbus Electrical Contractor Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus electricians that build trust, display licensing, and convert both emergency calls and planned upgrade projects.',
     heroLine1: 'Websites Built for',
@@ -436,7 +436,7 @@ export const industries: Industry[] = [
   {
     slug: 'painting',
     name: 'Painters & Painting Contractors',
-    exampleUrl: 'https://painter.cbusdigital.com',
+    exampleUrl: 'https://painting.cbusdigital.com',
     metaTitle: 'Web Design for Painters | Columbus Painting Contractor Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus painting contractors that showcase transformations, build trust, and generate consistent quote requests for interior and exterior work.',
     heroLine1: 'Websites Built for',
@@ -508,7 +508,7 @@ export const industries: Industry[] = [
   {
     slug: 'contracting',
     name: 'General Contractors',
-    exampleUrl: 'https://contractor.cbusdigital.com',
+    exampleUrl: 'https://contracting.cbusdigital.com',
     metaTitle: 'Web Design for General Contractors | Columbus Contractor Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus general contractors that showcase completed projects, build trust for large-ticket work, and generate qualified renovation leads.',
     heroLine1: 'Websites Built for',
@@ -580,7 +580,7 @@ export const industries: Industry[] = [
   {
     slug: 'auto-detailing',
     name: 'Auto Detailers & Car Detailing Services',
-    exampleUrl: 'https://autodetail.cbusdigital.com',
+    exampleUrl: 'https://auto-detailing.cbusdigital.com',
     metaTitle: 'Web Design for Auto Detailers | Columbus Car Detailing Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus auto detailers that showcase transformations, offer online booking, and build a loyal recurring client base.',
     heroLine1: 'Websites Built for',
@@ -652,7 +652,7 @@ export const industries: Industry[] = [
   {
     slug: 'pest-control',
     name: 'Pest Control Companies',
-    exampleUrl: 'https://pestcontrol.cbusdigital.com',
+    exampleUrl: 'https://pest-control.cbusdigital.com',
     metaTitle: 'Web Design for Pest Control | Columbus Exterminator Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus pest control companies. Emergency pest CTAs, treatment guarantee callouts, and local SEO that captures urgent infestation searches.',
     heroLine1: 'Websites Built for',
@@ -724,7 +724,7 @@ export const industries: Industry[] = [
   {
     slug: 'tree-service',
     name: 'Tree Service Companies',
-    exampleUrl: 'https://treeservice.cbusdigital.com',
+    exampleUrl: 'https://tree-service.cbusdigital.com',
     metaTitle: 'Web Design for Tree Services | Columbus Tree Company Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus tree service companies. Storm damage CTAs, safety credentials, and local SEO that generates both emergency and planned removal leads.',
     heroLine1: 'Websites Built for',
@@ -796,7 +796,7 @@ export const industries: Industry[] = [
   {
     slug: 'pressure-washing',
     name: 'Pressure Washing Companies',
-    exampleUrl: 'https://pressurewash.cbusdigital.com',
+    exampleUrl: 'https://pressure-washing.cbusdigital.com',
     metaTitle: 'Web Design for Pressure Washing | Columbus Power Washing Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus pressure washing companies. Dramatic before/after galleries, online quotes, and local SEO for driveway, deck, and house washing.',
     heroLine1: 'Websites Built for',
@@ -940,7 +940,7 @@ export const industries: Industry[] = [
   {
     slug: 'pool-service',
     name: 'Pool Service & Pool Companies',
-    exampleUrl: 'https://poolservice.cbusdigital.com',
+    exampleUrl: 'https://pool-service.cbusdigital.com',
     metaTitle: 'Web Design for Pool Services | Columbus Pool Company Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus pool service companies. Recurring maintenance plans, opening/closing season CTAs, and local SEO for pool repair and installation.',
     heroLine1: 'Websites Built for',
@@ -1084,7 +1084,7 @@ export const industries: Industry[] = [
   {
     slug: 'chiropractic',
     name: 'Chiropractors & Chiropractic Offices',
-    exampleUrl: 'https://chiro.cbusdigital.com',
+    exampleUrl: 'https://chiropractic.cbusdigital.com',
     metaTitle: 'Web Design for Chiropractors | Columbus Chiropractic Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus chiropractors. New patient acquisition design, condition-specific landing pages, and insurance callouts that drive appointments.',
     heroLine1: 'Websites Built for',
@@ -1156,7 +1156,7 @@ export const industries: Industry[] = [
   {
     slug: 'med-spa',
     name: 'Med Spas & Medical Aesthetics',
-    exampleUrl: 'https://medspa.cbusdigital.com',
+    exampleUrl: 'https://med-spa.cbusdigital.com',
     metaTitle: 'Web Design for Med Spas | Columbus Medical Spa Websites | CBUS Digital',
     metaDescription: 'Premium websites for Columbus med spas. Treatment showcases, before/after galleries, and luxury design that converts aesthetic treatment inquiries into bookings.',
     heroLine1: 'Websites Built for',
@@ -1372,7 +1372,7 @@ export const industries: Industry[] = [
   {
     slug: 'personal-training',
     name: 'Personal Trainers & Fitness Coaches',
-    exampleUrl: 'https://trainer.cbusdigital.com',
+    exampleUrl: 'https://personal-training.cbusdigital.com',
     metaTitle: 'Web Design for Personal Trainers | Columbus Fitness Coach Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus personal trainers and fitness coaches. Transformation galleries, program pricing, and online booking that fills your client roster.',
     heroLine1: 'Websites Built for',
@@ -1444,7 +1444,7 @@ export const industries: Industry[] = [
   {
     slug: 'dog-grooming',
     name: 'Dog Groomers & Pet Grooming Services',
-    exampleUrl: 'https://groomer.cbusdigital.com',
+    exampleUrl: 'https://dog-grooming.cbusdigital.com',
     metaTitle: 'Web Design for Dog Groomers | Columbus Pet Grooming Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus dog groomers. Adorable before/after galleries, online booking, and trust signals for pet parents that fill your grooming appointments.',
     heroLine1: 'Websites Built for',
@@ -1516,7 +1516,7 @@ export const industries: Industry[] = [
   {
     slug: 'moving',
     name: 'Moving Companies',
-    exampleUrl: 'https://mover.cbusdigital.com',
+    exampleUrl: 'https://moving.cbusdigital.com',
     metaTitle: 'Web Design for Moving Companies | Columbus Movers Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus moving companies. Online quote forms, transparent pricing, and trust signals that convert moving searches into booked jobs.',
     heroLine1: 'Websites Built for',
@@ -1588,7 +1588,7 @@ export const industries: Industry[] = [
   {
     slug: 'photography',
     name: 'Photographers & Photography Studios',
-    exampleUrl: 'https://photographer.cbusdigital.com',
+    exampleUrl: 'https://photography.cbusdigital.com',
     metaTitle: 'Web Design for Photographers | Columbus Photography Websites | CBUS Digital',
     metaDescription: 'Portfolio-forward websites for Columbus photographers. Gallery design, session packages, and booking systems that convert inquiries into booked shoots.',
     heroLine1: 'Websites Built for',
@@ -1660,7 +1660,7 @@ export const industries: Industry[] = [
   {
     slug: 'tutoring',
     name: 'Tutors & Tutoring Services',
-    exampleUrl: 'https://tutor.cbusdigital.com',
+    exampleUrl: 'https://tutoring.cbusdigital.com',
     metaTitle: 'Web Design for Tutors | Columbus Tutoring Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus tutors and tutoring services. Subject expertise displays, result testimonials, and online session booking that builds your student roster.',
     heroLine1: 'Websites Built for',
@@ -1804,7 +1804,7 @@ export const industries: Industry[] = [
   {
     slug: 'window-cleaning',
     name: 'Window Cleaning Services',
-    exampleUrl: 'https://windowcleaning.cbusdigital.com',
+    exampleUrl: 'https://window-cleaning.cbusdigital.com',
     metaTitle: 'Web Design for Window Cleaners | Columbus Window Cleaning Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus window cleaning companies. Before/after galleries, seasonal CTAs, and transparent pricing that books recurring residential and commercial clients.',
     heroLine1: 'Websites Built for',
@@ -1876,7 +1876,7 @@ export const industries: Industry[] = [
   {
     slug: 'appliance-repair',
     name: 'Appliance Repair Services',
-    exampleUrl: 'https://appliancerepair.cbusdigital.com',
+    exampleUrl: 'https://appliance-repair.cbusdigital.com',
     metaTitle: 'Web Design for Appliance Repair | Columbus Appliance Repair Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus appliance repair companies. Brand service lists, same-day CTAs, and diagnostic fee transparency that converts urgent appliance searches.',
     heroLine1: 'Websites Built for',
@@ -1948,7 +1948,7 @@ export const industries: Industry[] = [
   {
     slug: 'fencing',
     name: 'Fence Companies & Installers',
-    exampleUrl: 'https://fence.cbusdigital.com',
+    exampleUrl: 'https://fencing.cbusdigital.com',
     metaTitle: 'Web Design for Fence Companies | Columbus Fencing Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus fence companies. Material galleries, permit assistance callouts, and quote forms that convert backyard fencing searches into installations.',
     heroLine1: 'Websites Built for',
@@ -2020,7 +2020,7 @@ export const industries: Industry[] = [
   {
     slug: 'garage-door',
     name: 'Garage Door Repair & Installation',
-    exampleUrl: 'https://garagedoor.cbusdigital.com',
+    exampleUrl: 'https://garage-door.cbusdigital.com',
     metaTitle: 'Web Design for Garage Door Companies | Columbus Garage Door Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus garage door companies. Emergency CTA design, spring pricing transparency, and local legitimacy signals that convert urgent repair searches.',
     heroLine1: 'Websites Built for',
@@ -2092,7 +2092,7 @@ export const industries: Industry[] = [
   {
     slug: 'dumpster-rental',
     name: 'Dumpster Rental Companies',
-    exampleUrl: 'https://dumpster.cbusdigital.com',
+    exampleUrl: 'https://dumpster-rental.cbusdigital.com',
     metaTitle: 'Web Design for Dumpster Rental | Columbus Dumpster Websites | CBUS Digital',
     metaDescription: 'Websites for Columbus dumpster rental companies. Flat-rate pricing display, size guide, and online ordering that converts renovation and cleanout searches.',
     heroLine1: 'Websites Built for',

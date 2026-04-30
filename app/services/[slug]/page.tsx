@@ -28,12 +28,7 @@ export async function generateMetadata({
 function BrowserMockup({ industry }: { industry: Industry }) {
   const m = industry.mockup;
   return (
-    <a
-      href={industry.exampleUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block w-full max-w-2xl mx-auto"
-    >
+    <div className="block w-full max-w-2xl mx-auto">
       {/* Chrome frame */}
       <div className="rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#1a1a2e]">
         {/* Title bar */}
@@ -42,7 +37,7 @@ function BrowserMockup({ industry }: { industry: Industry }) {
           <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
           <span className="w-3 h-3 rounded-full bg-green-500/80" />
           <div className="flex-1 mx-3 bg-white/8 rounded-md px-3 py-1 text-xs text-slate-500 font-mono truncate">
-            {industry.exampleUrl.replace('https://', '')}
+            your-business.com
           </div>
         </div>
 
@@ -125,20 +120,9 @@ function BrowserMockup({ industry }: { industry: Industry }) {
               ))}
             </div>
           </div>
-
-          {/* Hover overlay */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300 pointer-events-none">
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-[#030712] font-bold text-sm px-5 py-2 rounded-full shadow-xl">
-              View Full Example Site →
-            </span>
-          </div>
         </div>
       </div>
-
-      <p className="text-center text-xs text-slate-500 mt-3 group-hover:text-slate-300 transition-colors">
-        Click to view the live example → {industry.exampleUrl}
-      </p>
-    </a>
+    </div>
   );
 }
 
@@ -184,19 +168,11 @@ export default async function IndustryPage({
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center">
-              <a
-                href={industry.exampleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/20 hover:border-white/40 text-white font-semibold px-6 py-3 rounded-lg transition-all hover:bg-white/5"
-              >
-                View Example Site →
-              </a>
               <Link
-                href="/demo"
+                href={`/demo?industry=${slug}`}
                 className="glow-button bg-violet-600 hover:bg-violet-500 text-white font-semibold px-6 py-3 rounded-lg transition-all"
               >
-                Get Your Free {industry.name.split(' ')[0]} Site
+                Get a Free {industry.name.split(' ')[0]} Demo →
               </Link>
             </div>
           </div>
@@ -208,8 +184,7 @@ export default async function IndustryPage({
             <div className="text-center mb-10">
               <h2 className="text-3xl font-black mb-3">See What Your Site Could Look Like</h2>
               <p className="text-slate-400">
-                A live preview of the example site we built for {industry.name.toLowerCase()}.{' '}
-                Click to view it in full.
+                A preview of the design and structure we'd build for {industry.name.toLowerCase()}.
               </p>
             </div>
             <BrowserMockup industry={industry} />
@@ -356,19 +331,11 @@ export default async function IndustryPage({
             <p className="text-white/80 text-lg mb-8">{industry.ctaSub}</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/demo"
+                href={`/demo?industry=${slug}`}
                 className="bg-white text-[#030712] font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-colors text-lg"
               >
-                Start My Free Demo
+                Get a Free {industry.name.split(' ')[0]} Demo →
               </Link>
-              <a
-                href={industry.exampleUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/40 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-colors text-lg"
-              >
-                View Example Site
-              </a>
             </div>
           </div>
         </section>

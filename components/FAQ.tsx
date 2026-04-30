@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "What happens after the site goes live?",
-    a: "You can take full ownership of your hosting, or we offer a monthly retainer ($100–$200/mo) that covers hosting, updates, and an hour of edits per month.",
+    a: "You can take full ownership of the site and host it anywhere, or sign up for our optional Set & Forget plan — we host it, keep it secure, and handle unlimited content updates whenever you need. Cancel anytime. Pricing details are on the pricing page.",
   },
 ];
 
