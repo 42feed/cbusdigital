@@ -7,12 +7,12 @@ import ProcessRoadmap from "@/components/ProcessRoadmap";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Founding offer: $497 (regular $1,997). Only 2 spots left. See your custom website before you pay anything.",
+    "Founding offer: $497 (regular $1,997). Only 2 of 5 spots left. See your custom website before you pay anything.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing — CBUS Digital",
     description:
-      "Founding offer: $497 (regular $1,997). Only 2 spots left. See your custom website before you pay anything.",
+      "Founding offer: $497 (regular $1,997). Only 2 of 5 spots left. See your custom website before you pay anything.",
     url: "https://cbusdigital.com/pricing",
     type: "website",
   },
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 const FOUNDING_PRICE = 497;
 const REGULAR_PRICE = 1997;
+const FOUNDING_SPOTS_TOTAL = 5;
 const FOUNDING_SPOTS_LEFT: number = 2;
 const foundingPriceFormatted = `$${FOUNDING_PRICE.toLocaleString()}`;
 const regularPriceFormatted = `$${REGULAR_PRICE.toLocaleString()}`;
@@ -99,7 +100,7 @@ export default function PricingPage() {
               <span className="text-white/70 line-through font-normal">{regularPriceFormatted}</span>
             </span>
             <span className="text-white/95 font-semibold">
-              · Only {FOUNDING_SPOTS_LEFT} {FOUNDING_SPOTS_LEFT === 1 ? "spot" : "spots"} left
+              · Only {FOUNDING_SPOTS_LEFT} of {FOUNDING_SPOTS_TOTAL} spots left
             </span>
           </div>
         </div>
@@ -124,8 +125,8 @@ export default function PricingPage() {
             </p>
 
             <div className="max-w-lg mx-auto rounded-2xl border border-amber-400/50 p-6 relative" style={{ background: "linear-gradient(145deg, #2e1065, #1e3a8a)" }}>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg">
-                Founding Offer · {FOUNDING_SPOTS_LEFT} Spots Left
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg whitespace-nowrap">
+                Founding · {FOUNDING_SPOTS_LEFT} of {FOUNDING_SPOTS_TOTAL} Spots Left
               </div>
               <div className="flex items-baseline justify-between mb-2 mt-2">
                 <span className="text-slate-300 text-sm">Stand-alone value</span>
@@ -205,7 +206,7 @@ export default function PricingPage() {
               </div>
               <div className="flex items-baseline justify-between gap-4 px-6 py-6 bg-gradient-to-r from-amber-500 to-orange-500 relative">
                 <div className="absolute top-2 right-3 bg-white/20 backdrop-blur text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
-                  {FOUNDING_SPOTS_LEFT} spots left
+                  {FOUNDING_SPOTS_LEFT} of {FOUNDING_SPOTS_TOTAL} left
                 </div>
                 <span className="text-white font-black text-base md:text-lg uppercase tracking-wider">
                   Founding price
@@ -245,7 +246,7 @@ export default function PricingPage() {
                     STANDARD
                   </div>
                   <div className="self-start text-xs font-bold bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full inline-block tracking-widest uppercase">
-                    Founding · {FOUNDING_SPOTS_LEFT} left
+                    Founding · {FOUNDING_SPOTS_LEFT} of {FOUNDING_SPOTS_TOTAL} left
                   </div>
                 </div>
                 <div className="flex items-baseline gap-3 mb-1">
