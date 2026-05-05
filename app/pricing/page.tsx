@@ -7,16 +7,22 @@ import ProcessRoadmap from "@/components/ProcessRoadmap";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "See your custom website before you pay anything. $1,997 flat — $6,900 in deliverables. No deposit, no risk.",
+    "Founding offer: $497 (regular $1,997). Only 2 spots left. See your custom website before you pay anything.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing — CBUS Digital",
     description:
-      "See your custom website before you pay anything. $1,997 flat — $6,900 in deliverables. No deposit, no risk.",
+      "Founding offer: $497 (regular $1,997). Only 2 spots left. See your custom website before you pay anything.",
     url: "https://cbusdigital.com/pricing",
     type: "website",
   },
 };
+
+const FOUNDING_PRICE = 497;
+const REGULAR_PRICE = 1997;
+const FOUNDING_SPOTS_LEFT: number = 2;
+const foundingPriceFormatted = `$${FOUNDING_PRICE.toLocaleString()}`;
+const regularPriceFormatted = `$${REGULAR_PRICE.toLocaleString()}`;
 
 const offerStack = [
   { label: "Custom website — up to 50 pages, unlimited locations & services", value: 2500 },
@@ -36,7 +42,7 @@ const totalValue = offerStack.reduce((sum, item) => sum + item.value, 0);
 const totalValueFormatted = `$${totalValue.toLocaleString()}`;
 
 const compareRows = [
-  { label: "Cost", cbus: "$1,997 flat", agency: "$5,000–$20,000+", diy: "$200–$500/yr + your time" },
+  { label: "Cost", cbus: "$497 founding · $1,997 regular", agency: "$5,000–$20,000+", diy: "$200–$500/yr + your time" },
   { label: "Time to launch", cbus: "1–2 business days", agency: "6–16 weeks", diy: "Weeks or months" },
   { label: "See it before paying", cbus: "Always", agency: "Pay upfront", diy: "Build it yourself first" },
   { label: "Revisions", cbus: "Unlimited", agency: "Billed hourly", diy: "Do it yourself" },
@@ -81,6 +87,23 @@ export default function PricingPage() {
       <Nav />
       <main className="flex-1">
 
+        {/* Founding-offer banner */}
+        <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 border-b border-amber-300/30">
+          <div className="max-w-6xl mx-auto px-6 py-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center text-sm md:text-base">
+            <span className="inline-flex items-center gap-2 font-black uppercase tracking-wider text-white">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+              Founding Offer
+            </span>
+            <span className="text-white/95 font-semibold">
+              {foundingPriceFormatted}{" "}
+              <span className="text-white/70 line-through font-normal">{regularPriceFormatted}</span>
+            </span>
+            <span className="text-white/95 font-semibold">
+              · Only {FOUNDING_SPOTS_LEFT} {FOUNDING_SPOTS_LEFT === 1 ? "spot" : "spots"} left
+            </span>
+          </div>
+        </div>
+
         {/* Hero — offer-forward with demo-first promise */}
         <section className="relative grid-bg overflow-hidden py-20 md:py-28 px-6 border-b border-white/8">
           <div className="relative max-w-4xl mx-auto">
@@ -100,14 +123,21 @@ export default function PricingPage() {
               We design the first draft of your custom site upfront — at zero cost. You see it live, we refine it together until every detail is exactly right, and you only pay when you love it.
             </p>
 
-            <div className="max-w-lg mx-auto rounded-2xl border border-violet-500/40 p-6" style={{ background: "linear-gradient(145deg, #2e1065, #1e3a8a)" }}>
-              <div className="flex items-baseline justify-between mb-2">
+            <div className="max-w-lg mx-auto rounded-2xl border border-amber-400/50 p-6 relative" style={{ background: "linear-gradient(145deg, #2e1065, #1e3a8a)" }}>
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg">
+                Founding Offer · {FOUNDING_SPOTS_LEFT} Spots Left
+              </div>
+              <div className="flex items-baseline justify-between mb-2 mt-2">
                 <span className="text-slate-300 text-sm">Stand-alone value</span>
                 <span className="text-slate-400 line-through font-mono text-lg tabular-nums">{totalValueFormatted}</span>
               </div>
+              <div className="flex items-baseline justify-between mb-2">
+                <span className="text-slate-300 text-sm">Regular price</span>
+                <span className="text-slate-400 line-through font-mono text-lg tabular-nums">{regularPriceFormatted}</span>
+              </div>
               <div className="flex items-baseline justify-between mb-5 pb-5 border-b border-white/15">
-                <span className="text-white font-bold">All in, one time</span>
-                <span className="text-5xl font-black text-white tabular-nums">$1,997</span>
+                <span className="text-white font-bold">Founding member, one time</span>
+                <span className="text-5xl font-black text-amber-300 tabular-nums">{foundingPriceFormatted}</span>
               </div>
               <a
                 href="/demo"
@@ -131,7 +161,7 @@ export default function PricingPage() {
                 Here's exactly what's included.
               </h2>
               <p className="text-slate-400 text-lg max-w-xl">
-                Each line below is something a traditional agency would quote you separately. You get all of it — for one flat $1,997.
+                Each line below is something a traditional agency would quote you separately. Founding members get all of it — for {foundingPriceFormatted} (regular {regularPriceFormatted}).
               </p>
             </div>
 
@@ -165,11 +195,22 @@ export default function PricingPage() {
                   {totalValueFormatted}
                 </span>
               </div>
-              <div className="flex items-baseline justify-between gap-4 px-6 py-6 bg-violet-600">
-                <span className="text-white font-black text-base md:text-lg uppercase tracking-wider">
-                  Your price today
+              <div className="flex items-baseline justify-between gap-4 px-6 py-3 bg-violet-950/40 border-t border-white/10">
+                <span className="text-slate-400 font-semibold text-sm md:text-base uppercase tracking-wider">
+                  Regular price
                 </span>
-                <span className="text-white font-black text-4xl md:text-5xl tabular-nums">$1,997</span>
+                <span className="text-slate-500 line-through text-xl md:text-2xl font-black font-mono tabular-nums">
+                  {regularPriceFormatted}
+                </span>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 px-6 py-6 bg-gradient-to-r from-amber-500 to-orange-500 relative">
+                <div className="absolute top-2 right-3 bg-white/20 backdrop-blur text-white text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded">
+                  {FOUNDING_SPOTS_LEFT} spots left
+                </div>
+                <span className="text-white font-black text-base md:text-lg uppercase tracking-wider">
+                  Founding price
+                </span>
+                <span className="text-white font-black text-4xl md:text-5xl tabular-nums">{foundingPriceFormatted}</span>
               </div>
             </div>
 
@@ -195,19 +236,28 @@ export default function PricingPage() {
             </div>
             <div className="grid md:grid-cols-3 gap-6 items-stretch">
               <div
-                className="md:col-span-2 relative rounded-2xl border border-violet-500/40 p-8 flex flex-col overflow-hidden"
+                className="md:col-span-2 relative rounded-2xl border border-amber-400/50 p-8 flex flex-col overflow-hidden"
                 style={{ background: "linear-gradient(145deg, #2e1065, #1e3a8a)" }}
               >
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-400 to-transparent" />
-                <div className="self-start text-xs font-bold bg-white text-violet-800 px-3 py-1 rounded-full inline-block mb-5 tracking-widest">
-                  STANDARD
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="self-start text-xs font-bold bg-white text-violet-800 px-3 py-1 rounded-full inline-block tracking-widest">
+                    STANDARD
+                  </div>
+                  <div className="self-start text-xs font-bold bg-gradient-to-r from-amber-500 to-orange-500 text-white px-3 py-1 rounded-full inline-block tracking-widest uppercase">
+                    Founding · {FOUNDING_SPOTS_LEFT} left
+                  </div>
                 </div>
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-5xl md:text-6xl font-black text-white tabular-nums">$1,997</span>
+                <div className="flex items-baseline gap-3 mb-1">
+                  <span className="text-5xl md:text-6xl font-black text-amber-300 tabular-nums">{foundingPriceFormatted}</span>
                   <span className="text-slate-300 text-lg">one-time</span>
                 </div>
+                <div className="text-slate-400 text-sm mb-3">
+                  Regular price{" "}
+                  <span className="line-through font-mono">{regularPriceFormatted}</span>
+                </div>
                 <p className="text-slate-300 text-base mb-6">
-                  Everything in The Stack. One flat price. Risk-free preview.
+                  Everything in The Stack. Founding-member rate. Risk-free preview.
                 </p>
                 <ul className="space-y-3 mb-8 flex-1">
                   <li className="flex items-center gap-3 text-slate-100">
@@ -324,7 +374,7 @@ export default function PricingPage() {
                 <span className="text-violet-400">before you pay anything.</span>
               </h2>
               <p className="text-slate-400 text-lg max-w-2xl">
-                No deposit. No commitment. No risk. The site only costs you something if it's worth $1,997 to you.
+                No deposit. No commitment. No risk. The site only costs you something if it's worth {foundingPriceFormatted} to you.
               </p>
             </div>
             <ProcessRoadmap />
