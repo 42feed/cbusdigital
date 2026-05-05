@@ -9,8 +9,56 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CBUS Digital — Columbus Web Design",
-  description: "We build modern, high-converting websites for Columbus small businesses. See yours before you pay.",
+  metadataBase: new URL("https://cbusdigital.com"),
+  title: {
+    default: "CBUS Digital — Columbus Web Design",
+    template: "%s | CBUS Digital",
+  },
+  description:
+    "We build modern, high-converting websites for Columbus small businesses. See yours before you pay.",
+  applicationName: "CBUS Digital",
+  authors: [{ name: "Kyle Fedewa", url: "https://cbusdigital.com" }],
+  creator: "Kyle Fedewa",
+  publisher: "CBUS Digital",
+  category: "Web Design",
+  keywords: [
+    "Columbus web design",
+    "Columbus website designer",
+    "small business websites Columbus Ohio",
+    "local SEO Columbus",
+    "web design for plumbers",
+    "web design for HVAC",
+    "Columbus Ohio web developer",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://cbusdigital.com",
+    siteName: "CBUS Digital",
+    title: "CBUS Digital — Columbus Web Design",
+    description:
+      "We build modern, high-converting websites for Columbus small businesses. See yours before you pay.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CBUS Digital — Columbus Web Design",
+    description:
+      "We build modern, high-converting websites for Columbus small businesses. See yours before you pay.",
+  },
   icons: {
     icon: "/favicon.svg",
   },

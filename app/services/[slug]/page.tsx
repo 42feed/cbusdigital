@@ -18,9 +18,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const industry = getIndustry(slug);
   if (!industry) return {};
+  const url = `https://cbusdigital.com/services/${slug}`;
   return {
-    title: industry.metaTitle,
+    title: { absolute: industry.metaTitle },
     description: industry.metaDescription,
+    keywords: industry.seoKeywords,
+    alternates: { canonical: `/services/${slug}` },
+    openGraph: {
+      title: industry.metaTitle,
+      description: industry.metaDescription,
+      url,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: industry.metaTitle,
+      description: industry.metaDescription,
+    },
   };
 }
 

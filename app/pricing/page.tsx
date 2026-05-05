@@ -5,8 +5,17 @@ import Footer from "@/components/Footer";
 import ProcessRoadmap from "@/components/ProcessRoadmap";
 
 export const metadata: Metadata = {
-  title: "Pricing — CBUS Digital",
-  description: "See your custom website before you pay anything. $1,997 flat — $6,900 in deliverables. No deposit, no risk.",
+  title: "Pricing",
+  description:
+    "See your custom website before you pay anything. $1,997 flat — $6,900 in deliverables. No deposit, no risk.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Pricing — CBUS Digital",
+    description:
+      "See your custom website before you pay anything. $1,997 flat — $6,900 in deliverables. No deposit, no risk.",
+    url: "https://cbusdigital.com/pricing",
+    type: "website",
+  },
 };
 
 const offerStack = [

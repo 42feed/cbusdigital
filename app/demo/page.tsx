@@ -4,8 +4,17 @@ import { Suspense } from "react";
 import DemoForm from "@/components/DemoForm";
 
 export const metadata: Metadata = {
-  title: "Get Your Free Demo Site — CBUS Digital",
-  description: "Tell us about your business and we'll build a personalized demo site within 1–2 business days. No payment required.",
+  title: { absolute: "Get Your Free Demo Site — CBUS Digital" },
+  description:
+    "Tell us about your business and we'll build a personalized demo site within 1–2 business days. No payment required.",
+  alternates: { canonical: "/demo" },
+  openGraph: {
+    title: "Get Your Free Demo Site — CBUS Digital",
+    description:
+      "Tell us about your business and we'll build a personalized demo site within 1–2 business days. No payment required.",
+    url: "https://cbusdigital.com/demo",
+    type: "website",
+  },
 };
 
 export default function DemoPage() {

@@ -4,8 +4,17 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — CBUS Digital",
-  description: "Have a question before requesting your demo? Reach out to Kyle directly.",
+  title: "Contact",
+  description:
+    "Have a question before requesting your demo? Reach out to Kyle directly.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact — CBUS Digital",
+    description:
+      "Have a question before requesting your demo? Reach out to Kyle directly.",
+    url: "https://cbusdigital.com/contact",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {

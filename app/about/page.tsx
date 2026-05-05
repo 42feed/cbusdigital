@@ -5,8 +5,17 @@ import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About Kyle Fedewa — CBUS Digital",
-  description: "Forbes 30 Under 30 honoree. Ohio State University graduate. Columbus native building high-performance websites for local businesses.",
+  title: { absolute: "About Kyle Fedewa — CBUS Digital" },
+  description:
+    "Forbes 30 Under 30 honoree. Ohio State University graduate. Columbus native building high-performance websites for local businesses.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Kyle Fedewa — CBUS Digital",
+    description:
+      "Forbes 30 Under 30 honoree and Ohio State graduate building high-performance websites for Columbus businesses.",
+    url: "https://cbusdigital.com/about",
+    type: "profile",
+  },
 };
 
 
