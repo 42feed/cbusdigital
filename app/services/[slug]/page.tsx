@@ -152,6 +152,13 @@ export default async function IndustryPage({
 
   const c = industry.colors;
 
+  const allSlugs = getAllSlugs();
+  const idx = allSlugs.indexOf(slug);
+  const siblings = Array.from({ length: 6 }, (_, i) => {
+    const nextSlug = allSlugs[(idx + i + 1) % allSlugs.length];
+    return getIndustry(nextSlug)!;
+  });
+
   const url = `https://cbusdigital.com/services/${slug}`;
   const serviceJsonLd = {
     '@context': 'https://schema.org',
@@ -363,6 +370,38 @@ export default async function IndustryPage({
                     <span className="text-slate-400 text-sm">{desc}</span>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Other industries ── */}
+        <section className="py-16 px-6 bg-[#0a0a14] border-t border-white/8">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-violet-400 text-xs font-bold uppercase tracking-widest mb-3">
+              More industries we serve
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
+              Same approach, tailored for each industry
+            </h2>
+            <p className="text-slate-400 mb-8 max-w-2xl">
+              We build conversion-focused websites for service businesses across Columbus.
+              Every site is custom-coded for the way your customers search and decide.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {siblings.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/services/${s.slug}`}
+                  className="glass-card rounded-xl px-4 py-4 hover:border-violet-500/40 hover:bg-white/[0.06] text-slate-300 hover:text-white transition-all flex items-center justify-between group"
+                >
+                  <span className="font-semibold">
+                    {s.name.split(' ')[0]} websites
+                  </span>
+                  <span className="text-violet-400 group-hover:translate-x-0.5 transition-transform">
+                    →
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

@@ -149,8 +149,11 @@ export default function AboutPage() {
                     src="/images/kyle-forbes.jpeg"
                     alt="Kyle Fedewa at Forbes 30 Under 30 Summit"
                     fill
+                    sizes="(min-width: 768px) 320px, 288px"
+                    quality={75}
                     className="object-cover object-top"
                     priority
+                    fetchPriority="high"
                   />
                 </div>
               </div>

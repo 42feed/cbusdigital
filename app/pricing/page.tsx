@@ -165,7 +165,8 @@ export default function PricingPage() {
             </div>
 
             <h1 className="text-5xl md:text-7xl font-black text-white text-center leading-[1.05] mb-6 tracking-tight">
-              First We Build It.<br />
+              First We Build It.{" "}
+              <br />
               <span className="text-violet-400">Then You Decide.</span>
             </h1>
 
@@ -420,7 +421,8 @@ export default function PricingPage() {
             <div className="mb-16">
               <div className="text-violet-400 text-xs font-bold uppercase tracking-widest mb-3">How It Works</div>
               <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
-                You see your site<br />
+                You see your site{" "}
+                <br />
                 <span className="text-violet-400">before you pay anything.</span>
               </h2>
               <p className="text-slate-400 text-lg max-w-2xl">

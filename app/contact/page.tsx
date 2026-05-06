@@ -37,8 +37,9 @@ export default function ContactPage() {
                 Columbus, OH
               </div>
               <h1 className="text-4xl md:text-5xl font-black text-white mb-5 leading-tight">
-                Have a Question?<br />
-                <span className="gradient-text">Let's Talk.</span>
+                Have a Question?{" "}
+                <br />
+                <span className="gradient-text">Let&rsquo;s Talk.</span>
               </h1>
               <p className="text-slate-400 text-lg leading-relaxed mb-8">
                 If you're not quite ready to request your demo site but have a question first, send a message and I'll get back to you personally — usually within a few hours.

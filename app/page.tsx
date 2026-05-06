@@ -12,6 +12,7 @@ import Founder from "@/components/home/Founder";
 import Process from "@/components/home/Process";
 import FAQ from "@/components/home/FAQ";
 import CTA from "@/components/home/CTA";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -116,15 +117,7 @@ export default function Home() {
         <FAQ />
         <CTA />
       </main>
-      <footer className="relative z-10 px-6 py-10 border-t border-white/5">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-slate-500">
-          <div className="flex items-center gap-2">
-            <span className="w-5 h-5 rounded-md bg-gradient-to-br from-violet-500 to-cyan-500" />
-            <span>CBUS Digital · Columbus, Ohio</span>
-          </div>
-          <div className="mono text-[12px]">© 2025 — built first, paid for last.</div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

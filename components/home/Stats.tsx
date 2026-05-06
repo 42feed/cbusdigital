@@ -39,7 +39,9 @@ export default function Stats() {
               Verified, every build
             </div>
             <h3 className="text-[28px] md:text-[34px] tracking-[-0.02em] leading-[1.1] font-bold mb-5">
-              We don&rsquo;t just say it&rsquo;s fast.<br />We ship the score.
+              We don&rsquo;t just say it&rsquo;s fast.{" "}
+              <br />
+              We ship the score.
             </h3>
             <p className="text-slate-400 leading-[1.6] mb-6">
               Every site we deliver clears Lighthouse&rsquo;s four scoring categories at
@@ -71,7 +73,7 @@ function PricingCta() {
   return (
     <a
       href="/pricing"
-      className="group bg-[#0a0a12] p-7 md:p-8 flex flex-col justify-between transition-colors hover:bg-[#0f0f1a] relative overflow-hidden"
+      className="group bg-[#0a0a12] p-5 md:p-8 flex flex-col justify-between transition-colors hover:bg-[#0f0f1a] relative overflow-hidden"
     >
       <div
         aria-hidden
@@ -130,12 +132,14 @@ function Stat({
       initial={{ opacity: 0, y: 12 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="bg-[#0a0a12] p-7 md:p-8"
+      className="bg-[#0a0a12] p-5 md:p-8"
     >
-      <div className="text-[40px] md:text-[52px] font-bold tabular tracking-[-0.03em] leading-none mb-3 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">
-        {prefix}
-        <span ref={display}>0</span>
-        {suffix}
+      <div className="font-bold tabular tracking-[-0.03em] leading-none mb-3 bg-gradient-to-b from-white to-slate-400 bg-clip-text text-transparent">
+        <span className="text-[30px] md:text-[52px]">
+          {prefix}
+          <span ref={display}>0</span>
+        </span>
+        <span className="text-[18px] md:text-[36px]">{suffix}</span>
       </div>
       <div className="text-[14px] text-white font-semibold mb-1">{label}</div>
       <div className="text-[12px] text-slate-500 leading-[1.4]">{sub}</div>
