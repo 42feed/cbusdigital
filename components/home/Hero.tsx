@@ -62,12 +62,31 @@ export default function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="text-[44px] sm:text-[58px] md:text-[68px] leading-[0.98] tracking-[-0.035em] font-bold mb-6"
+            className="text-[44px] sm:text-[58px] md:text-[68px] leading-[0.98] tracking-[-0.035em] font-bold mb-5"
           >
-            Websites Built for
+            Columbus Web Design{" "}
             <br />
-            <RotatingText />
+            for <span className="gradient-text">Local Service Businesses</span>
           </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            aria-hidden="true"
+            className="text-[20px] sm:text-[22px] text-slate-300 mb-6"
+          >
+            Built for <RotatingText />
+          </motion.p>
+
+          <span className="sr-only">
+            Web design for plumbers, HVAC companies, landscapers, cleaning
+            services, roofers, electricians, contractors, painters, auto
+            detailers, pest control, tree service, pressure washing, handymen,
+            pool service, locksmiths, chiropractors, med spas, attorneys,
+            accountants, personal trainers, dog groomers, moving companies,
+            photographers, tutors, flooring companies, window cleaning,
+            appliance repair, fence companies, garage door installers, and
+            dumpster rental companies in Columbus, Ohio.
+          </span>
 
           <motion.p
             variants={fadeUp}
@@ -80,7 +99,7 @@ export default function Hero() {
 
           <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-8">
             <a
-              href="#"
+              href="/demo"
               className="group inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white text-[15px] font-semibold px-6 py-3.5 rounded-xl transition-colors"
               style={{ boxShadow: "0 0 32px rgba(124, 58, 237, 0.45)" }}
             >
@@ -161,6 +180,8 @@ function TiltMockup() {
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
+      animate={{ y: [0, -10, 0] }}
+      transition={{ y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" } }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d", perspective: 1200 }}
       className="relative"
     >
@@ -188,7 +209,7 @@ function ActivityToast() {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
-      className="absolute -top-3 -left-6 md:-left-16 toast-in z-20"
+      className="absolute top-2 left-2 md:-top-3 md:-left-16 toast-in z-20"
     >
       <div className="home-card-edge px-4 py-3 flex items-center gap-3 max-w-[260px] shadow-xl shadow-black/40">
         <div className="relative shrink-0">
