@@ -152,8 +152,41 @@ export default async function IndustryPage({
 
   const c = industry.colors;
 
+  const url = `https://cbusdigital.com/services/${slug}`;
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: `Web Design for ${industry.name}`,
+    description: industry.metaDescription,
+    serviceType: 'Web Design',
+    url,
+    provider: { '@id': 'https://cbusdigital.com/#business' },
+    areaServed: [
+      { '@type': 'City', name: 'Columbus' },
+      { '@type': 'AdministrativeArea', name: 'Franklin County, Ohio' },
+    ],
+  };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cbusdigital.com' },
+      { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://cbusdigital.com/#industries' },
+      { '@type': 'ListItem', position: 3, name: industry.name, item: url },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Nav />
       <main className="flex-1">
 

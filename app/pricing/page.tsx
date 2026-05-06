@@ -82,9 +82,58 @@ const faqs = [
   },
 ];
 
+const pricingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://cbusdigital.com/pricing#service',
+  name: 'Custom Website Design',
+  description:
+    'Custom-coded website with up to 50 pages, location SEO pages, and conversion-focused design — built before you pay.',
+  provider: { '@id': 'https://cbusdigital.com/#business' },
+  url: 'https://cbusdigital.com/pricing',
+  offers: {
+    '@type': 'Offer',
+    price: FOUNDING_PRICE,
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: 'https://cbusdigital.com/pricing',
+  },
+};
+
+const pricingBreadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cbusdigital.com' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://cbusdigital.com/pricing' },
+  ],
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function PricingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingBreadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Nav />
       <main className="flex-1">
 

@@ -59,9 +59,51 @@ const values = [
 ];
 
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://cbusdigital.com/about#kyle',
+  name: 'Kyle Fedewa',
+  jobTitle: 'Owner & Web Designer',
+  worksFor: { '@id': 'https://cbusdigital.com/#business' },
+  url: 'https://cbusdigital.com/about',
+  image: 'https://cbusdigital.com/images/kyle-forbes.jpeg',
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'The Ohio State University' },
+    { '@type': 'CollegeOrUniversity', name: 'Pennsylvania State University' },
+  ],
+  award: 'Forbes 30 Under 30',
+  homeLocation: {
+    '@type': 'Place',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Columbus',
+      addressRegion: 'OH',
+      addressCountry: 'US',
+    },
+  },
+};
+
+const aboutBreadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cbusdigital.com' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://cbusdigital.com/about' },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumbJsonLd) }}
+      />
       <Nav />
       <main className="flex-1">
 
