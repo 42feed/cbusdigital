@@ -2,21 +2,6 @@ import Link from "next/link";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
 import { industries } from "@/lib/industries";
 
-const serviceCities = [
-  "Columbus",
-  "Dublin",
-  "Westerville",
-  "Hilliard",
-  "Worthington",
-  "Gahanna",
-  "Upper Arlington",
-  "Grove City",
-  "Reynoldsburg",
-  "Pickerington",
-  "Powell",
-  "New Albany",
-];
-
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -109,19 +94,10 @@ export default function Footer() {
                 <span>
                   Powell, OH
                   <span className="text-slate-600"> · </span>
-                  Serving the Columbus Metro
+                  Serving All of Central Ohio
                 </span>
               </li>
             </ul>
-
-            <div className="mt-7">
-              <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-3">
-                Service area
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                {serviceCities.join(" · ")}
-              </p>
-            </div>
           </div>
         </div>
 
