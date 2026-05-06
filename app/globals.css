@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
+html {
+  overflow-x: clip;
+}
+
 body {
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   background-color: #030712;
   color: #f8fafc;
+  overflow-x: clip;
 }
 
 .gradient-text {
@@ -94,4 +99,14 @@ body {
 .fade-in-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Shimmering gradient border for chooser cards */
+@keyframes shimmer-border {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.shimmer-border {
+  background-size: 200% 200%;
+  animation: shimmer-border 6s ease-in-out infinite;
 }

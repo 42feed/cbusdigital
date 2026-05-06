@@ -124,7 +124,7 @@ export default function ProcessRoadmap() {
       </div>
 
       {/* Step bubbles */}
-      <div className="flex items-center justify-between gap-1 mb-10">
+      <div className="flex items-center justify-between gap-0.5 sm:gap-1 mb-10">
         {steps.map((step, i) => {
           const c = phaseColors[step.phase];
           const isActive = i === active;
@@ -133,11 +133,11 @@ export default function ProcessRoadmap() {
             <button
               key={step.number}
               onClick={() => setActive(i)}
-              className="flex flex-col items-center gap-1.5 group flex-1"
+              className="flex flex-col items-center gap-1.5 group flex-1 min-w-0"
               aria-label={step.title}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-black border transition-all duration-300 ${
+                className={`w-7 h-7 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-[11px] sm:text-sm font-black border transition-all duration-300 ${
                   isActive
                     ? `${c.bg} ${c.border} ${c.text} scale-110 shadow-lg`
                     : isDone
