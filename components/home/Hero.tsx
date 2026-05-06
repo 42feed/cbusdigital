@@ -62,9 +62,9 @@ export default function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="text-[44px] sm:text-[58px] md:text-[68px] leading-[0.98] tracking-[-0.035em] font-bold mb-5"
+            className="text-[40px] sm:text-[54px] md:text-[60px] leading-[1.02] tracking-[-0.035em] font-bold mb-5"
           >
-            Columbus Web Design{" "}
+            <span className="sm:whitespace-nowrap">Columbus Web Design</span>
             <br />
             for <span className="gradient-text">Local Service Businesses</span>
           </motion.h1>
