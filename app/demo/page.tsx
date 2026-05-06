@@ -43,6 +43,16 @@ export default function DemoPage() {
 
       {/* Form */}
       <main className="flex-1 flex flex-col items-center justify-center px-6 py-16 relative">
+        <div className="text-center mb-10 w-full max-w-2xl mx-auto">
+          <div className="text-5xl mb-6">🚀</div>
+          <h1 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+            Get Your Free Demo Site
+          </h1>
+          <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+            Tell us about your business and we&rsquo;ll build a personalized demo
+            site within 1&ndash;2 business days. No payment required.
+          </p>
+        </div>
         <Suspense fallback={null}>
           <DemoForm />
         </Suspense>

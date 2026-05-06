@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Zap, ClipboardList, ArrowRight, Clock } from "lucide-react";
 
 // Maps the slug used in /services/[slug] to the matching INDUSTRY_GROUPS label
 const SLUG_TO_LABEL: Record<string, string> = {
@@ -391,6 +392,98 @@ function ServiceAreaInput({
   );
 }
 
+function ChooserCard({
+  onClick,
+  Icon,
+  title,
+  description,
+  duration,
+  preview,
+  previewLabel,
+  borderGradient,
+  glowColor,
+  iconBg,
+  iconShadow,
+  accentColor,
+  accentBg,
+  accentBorder,
+}: {
+  onClick: () => void;
+  Icon: typeof Zap;
+  title: string;
+  description: string;
+  duration: string;
+  preview: React.ReactNode;
+  previewLabel: string;
+  borderGradient: string;
+  glowColor: string;
+  iconBg: string;
+  iconShadow: string;
+  accentColor: string;
+  accentBg: string;
+  accentBorder: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="group relative rounded-2xl p-[1.5px] text-left transition-transform duration-300 hover:scale-[1.015] focus:outline-none focus:scale-[1.015]"
+    >
+      {/* Animated gradient border */}
+      <div
+        aria-hidden
+        className="absolute inset-0 rounded-2xl shimmer-border"
+        style={{ background: borderGradient }}
+      />
+
+      {/* Card body */}
+      <div className="relative rounded-[15px] bg-[#0a0a14] p-7 md:p-8 overflow-hidden h-full">
+        {/* Glow blob */}
+        <div
+          aria-hidden
+          className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+          style={{ background: `radial-gradient(circle, ${glowColor}, transparent 70%)` }}
+        />
+
+        <div className="relative">
+          {/* Icon + duration badge row */}
+          <div className="flex items-start justify-between mb-6">
+            <div
+              className={`w-14 h-14 rounded-2xl ${iconBg} flex items-center justify-center shadow-lg ${iconShadow} group-hover:scale-110 transition-transform duration-300`}
+            >
+              <Icon className="w-7 h-7 text-white" strokeWidth={2.25} />
+            </div>
+            <div
+              className={`inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest ${accentColor} ${accentBg} border ${accentBorder} rounded-full px-2.5 py-1`}
+            >
+              <Clock className="w-3 h-3" strokeWidth={2.5} />
+              {duration}
+            </div>
+          </div>
+
+          <h3 className="text-2xl md:text-[26px] font-black text-white mb-3 tracking-tight leading-tight">
+            {title}
+          </h3>
+          <p className="text-slate-400 text-[14px] md:text-[15px] leading-[1.6] mb-7">
+            {description}
+          </p>
+
+          {/* Visual preview */}
+          <div className="mb-2">{preview}</div>
+          <p className="text-[11px] text-slate-600 mb-6">{previewLabel}</p>
+
+          {/* CTA */}
+          <div
+            className={`inline-flex items-center gap-1.5 text-[14px] font-bold ${accentColor} group-hover:text-white transition-colors`}
+          >
+            Start
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 export default function DemoForm() {
   const searchParams = useSearchParams();
   const prefilledIndustry = (() => {
@@ -399,7 +492,7 @@ export default function DemoForm() {
     return SLUG_TO_LABEL[slug] ?? "";
   })();
 
-  const [intro, setIntro] = useState(true);
+  const [mode, setMode] = useState<"choose" | "quick" | "detailed">("choose");
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -420,6 +513,49 @@ export default function DemoForm() {
     email: "",
     extras: "",
   });
+
+  const [quickData, setQuickData] = useState({ name: "", email: "", website: "" });
+
+  const handleQuickSubmit = async () => {
+    setError("");
+    if (!quickData.name.trim()) { setError("Please enter your name."); return; }
+    if (!quickData.email.trim()) { setError("Please enter your email address."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(quickData.email)) { setError("Please enter a valid email address."); return; }
+    if (!quickData.website.trim()) { setError("Please enter your website URL."); return; }
+    if (!/^(https?:\/\/)?[^\s/.]+\.[^\s]+$/.test(quickData.website.trim())) { setError("Please enter a valid website URL."); return; }
+
+    setSubmitting(true);
+    try {
+      const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+      const cleanedUrl = quickData.website.trim();
+      const displayName = cleanedUrl.replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/\/$/, "");
+      if (formspreeId) {
+        await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            formMode: "quick",
+            name: quickData.name,
+            email: quickData.email,
+            websiteUrl: cleanedUrl,
+            _subject: `New Quick Demo Request — ${displayName}`,
+          }),
+        });
+      }
+      setData((prev) => ({
+        ...prev,
+        firstName: quickData.name,
+        email: quickData.email,
+        websiteUrl: cleanedUrl,
+        businessName: displayName,
+      }));
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please email kyle@cbusdigital.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) =>
     setData((prev) => ({ ...prev, [field]: value }));
@@ -457,6 +593,7 @@ export default function DemoForm() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            formMode: "detailed",
             name: data.firstName,
             businessName: data.businessName,
             industry: industryLabel,
@@ -516,43 +653,158 @@ export default function DemoForm() {
     );
   }
 
-  if (intro) {
+  if (mode === "choose") {
     return (
-      <div className="w-full max-w-xl mx-auto text-center animate-in fade-in duration-500">
-        <div className="text-5xl mb-6">🚀</div>
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
-          Let's Build Your Free Demo Site
-        </h2>
-        <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-md mx-auto">
-          We'll ask you a few quick questions about your business — takes about{" "}
-          <span className="text-white font-semibold">3 minutes</span>. Once submitted, we'll
-          research your business and build you a fully personalized, live website within{" "}
-          <span className="text-white font-semibold">1–2 business days</span>. No payment. No commitment.
-          You see it first.
+      <div className="w-full max-w-4xl mx-auto animate-in fade-in duration-500">
+        <p className="text-center text-slate-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto mb-10">
+          Two ways to start — pick whichever fits how much you want to share.
         </p>
 
-        <div className="glass-card rounded-2xl p-6 max-w-sm mx-auto text-left space-y-3 mb-8">
-          <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">What to expect</div>
-          {[
-            "Answer a few questions about your business",
-            "We build your personalized site for free",
-            "You get a live link within 1–2 business days",
-            "Love it? Then we talk next steps",
-          ].map((item, i) => (
-            <div key={i} className="flex items-start gap-3 text-sm text-slate-300">
-              <span className="text-violet-400 font-bold shrink-0">{i + 1}.</span>
-              {item}
-            </div>
-          ))}
+        <div className="grid md:grid-cols-2 gap-5">
+          {/* Quick path */}
+          <ChooserCard
+            onClick={() => { setMode("quick"); setError(""); }}
+            Icon={Zap}
+            title="Take the wheel"
+            description="Just give us your name, email, and website. We'll dig up the rest — services, areas, hours, reviews — and build a personalized demo from what we find."
+            duration="~30 seconds"
+            preview={
+              <div className="flex items-center gap-2">
+                <div className="flex-1 h-2 rounded-full bg-gradient-to-r from-violet-500 to-violet-400" />
+                <div className="flex-1 h-2 rounded-full bg-violet-500/50" />
+                <div className="flex-1 h-2 rounded-full bg-violet-500/25" />
+              </div>
+            }
+            previewLabel="3 quick fields"
+            borderGradient="linear-gradient(135deg, #a78bfa 0%, #22d3ee 50%, #7c3aed 100%)"
+            glowColor="#7c3aed"
+            iconBg="bg-gradient-to-br from-violet-500 to-cyan-500"
+            iconShadow="shadow-violet-900/50"
+            accentColor="text-violet-300"
+            accentBg="bg-violet-500/15"
+            accentBorder="border-violet-500/30"
+          />
+
+          {/* Detailed path */}
+          <ChooserCard
+            onClick={() => { setMode("detailed"); setStep(0); setError(""); }}
+            Icon={ClipboardList}
+            title="Give us the details"
+            description="Walk us through your business — industry, services, areas, what to feature. More input upfront means closer to perfect on the first draft."
+            duration="~3 minutes"
+            preview={
+              <div className="flex items-center gap-1">
+                {Array.from({ length: 11 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 h-2 rounded-full"
+                    style={{
+                      background: `linear-gradient(90deg, #34d399, #22d3ee)`,
+                      opacity: 0.85 - i * 0.06,
+                    }}
+                  />
+                ))}
+              </div>
+            }
+            previewLabel="11 guided steps"
+            borderGradient="linear-gradient(135deg, #34d399 0%, #22d3ee 50%, #10b981 100%)"
+            glowColor="#10b981"
+            iconBg="bg-gradient-to-br from-emerald-500 to-cyan-500"
+            iconShadow="shadow-emerald-900/50"
+            accentColor="text-emerald-300"
+            accentBg="bg-emerald-500/15"
+            accentBorder="border-emerald-500/30"
+          />
         </div>
 
+        <p className="text-center text-slate-600 text-xs mt-8">
+          No credit card. No sales call. Unlimited revisions.
+        </p>
+      </div>
+    );
+  }
+
+  if (mode === "quick") {
+    return (
+      <div className="w-full max-w-xl mx-auto animate-in fade-in duration-500">
         <button
-          onClick={() => setIntro(false)}
-          className="glow-button bg-violet-600 hover:bg-violet-500 text-white text-lg font-bold px-10 py-4 rounded-xl transition-all"
+          onClick={() => { setMode("choose"); setError(""); }}
+          className="text-slate-500 hover:text-slate-300 text-sm transition-colors mb-8"
         >
-          Get Started →
+          ← Back
         </button>
-        <p className="text-slate-600 text-xs mt-4">No credit card. No sales call. Unlimited revisions.</p>
+
+        <div className="mb-8">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-violet-300 bg-violet-500/15 border border-violet-500/30 rounded-full px-2.5 py-1 mb-5">
+            <span>⚡</span> Take the wheel
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-3 leading-tight">
+            Three fields. We handle the rest.
+          </h2>
+          <p className="text-slate-400 text-base leading-relaxed">
+            Submit and we&rsquo;ll research your business — services, hours, locations, reviews — and have a personalized demo in your inbox within 1–2 business days.
+          </p>
+        </div>
+
+        <div className="space-y-5">
+          <div>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Your name</label>
+            <input
+              autoFocus
+              type="text"
+              placeholder="First name"
+              value={quickData.name}
+              onChange={(e) => setQuickData({ ...quickData, name: e.target.value })}
+              className="w-full bg-white/5 border border-white/12 text-white placeholder-slate-600 rounded-xl px-5 py-4 text-lg outline-none focus:border-violet-500/60 focus:bg-white/8 transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Email</label>
+            <input
+              type="email"
+              placeholder="you@yourbusiness.com"
+              value={quickData.email}
+              onChange={(e) => setQuickData({ ...quickData, email: e.target.value })}
+              className="w-full bg-white/5 border border-white/12 text-white placeholder-slate-600 rounded-xl px-5 py-4 text-lg outline-none focus:border-violet-500/60 focus:bg-white/8 transition-all"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-300 mb-2">Your website</label>
+            <input
+              type="url"
+              placeholder="yourbusiness.com"
+              value={quickData.website}
+              onChange={(e) => setQuickData({ ...quickData, website: e.target.value })}
+              onKeyDown={(e) => e.key === "Enter" && handleQuickSubmit()}
+              className="w-full bg-white/5 border border-white/12 text-white placeholder-slate-600 rounded-xl px-5 py-4 text-lg outline-none focus:border-violet-500/60 focus:bg-white/8 transition-all"
+            />
+            <p className="text-xs text-slate-600 mt-2">
+              Don&rsquo;t have a website?{" "}
+              <button
+                onClick={() => { setMode("detailed"); setStep(0); setError(""); }}
+                className="text-violet-400 hover:text-violet-300 underline underline-offset-2"
+              >
+                Use the detailed form instead
+              </button>
+              .
+            </p>
+          </div>
+        </div>
+
+        {error && <p className="text-red-400 text-sm mt-4">{error}</p>}
+
+        <button
+          onClick={handleQuickSubmit}
+          disabled={submitting}
+          className="mt-6 glow-button bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white text-lg font-bold w-full py-4 rounded-xl transition-all"
+        >
+          {submitting ? "Sending..." : "Build My Demo →"}
+        </button>
+
+        <div className="flex items-center gap-2 mt-4 justify-center">
+          <span className="text-emerald-400 text-sm">🔒</span>
+          <p className="text-slate-600 text-xs">No spam. No payment. Just your demo.</p>
+        </div>
       </div>
     );
   }
@@ -770,9 +1022,12 @@ export default function DemoForm() {
             ← Back
           </button>
         ) : (
-          <Link href="/" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">
-            ← Home
-          </Link>
+          <button
+            onClick={() => { setMode("choose"); setError(""); }}
+            className="text-slate-500 hover:text-slate-300 text-sm transition-colors"
+          >
+            ← Back
+          </button>
         )}
 
         {step < TOTAL_STEPS - 1 && step !== 2 && step !== 10 && (
