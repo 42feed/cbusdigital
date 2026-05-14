@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 import ProcessRoadmap from "@/components/ProcessRoadmap";
+import LockInForm from "@/components/LockInForm";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -174,7 +175,7 @@ export default function PricingPage() {
               We design the first draft of your custom site upfront — at zero cost. You see it live, we refine it together until every detail is exactly right, and you only pay when you love it.
             </p>
 
-            <div className="max-w-lg mx-auto rounded-2xl border border-amber-400/50 p-6 relative" style={{ background: "linear-gradient(145deg, #2e1065, #1e3a8a)" }}>
+            <div id="lock-in" className="max-w-lg mx-auto rounded-2xl border border-amber-400/50 p-6 relative scroll-mt-24" style={{ background: "linear-gradient(145deg, #2e1065, #1e3a8a)" }}>
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg whitespace-nowrap">
                 Founding · {FOUNDING_SPOTS_LEFT} of {FOUNDING_SPOTS_TOTAL} Spots Left
               </div>
@@ -190,12 +191,7 @@ export default function PricingPage() {
                 <span className="text-white font-bold">Founding member, one time</span>
                 <span className="text-5xl font-black text-amber-300 tabular-nums">{foundingPriceFormatted}</span>
               </div>
-              <a
-                href="/demo"
-                className="block text-center bg-white text-violet-700 font-bold py-3.5 rounded-xl hover:bg-slate-50 transition-all"
-              >
-                Claim Your Free Demo →
-              </a>
+              <LockInForm />
               <p className="text-slate-300 text-xs text-center mt-3">
                 $0 to start · $0 deposit · $0 if you walk away
               </p>
@@ -267,7 +263,7 @@ export default function PricingPage() {
 
             <div className="mt-10 text-center">
               <a
-                href="/demo"
+                href="#lock-in"
                 className="glow-button inline-block bg-violet-600 hover:bg-violet-500 text-white font-bold px-10 py-4 rounded-xl transition-all"
               >
                 Claim Your Free Demo →
@@ -325,7 +321,7 @@ export default function PricingPage() {
                   </li>
                 </ul>
                 <a
-                  href="/demo"
+                  href="#lock-in"
                   className="block text-center bg-white text-violet-700 font-bold py-3.5 rounded-xl hover:bg-slate-50 transition-all"
                 >
                   Claim Your Free Demo →
@@ -406,7 +402,7 @@ export default function PricingPage() {
 
             <div className="mt-10 text-center">
               <a
-                href="/demo"
+                href="#lock-in"
                 className="glow-button inline-block bg-violet-600 hover:bg-violet-500 text-white font-bold px-10 py-4 rounded-xl transition-all"
               >
                 Claim Your Free Demo →
